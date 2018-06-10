@@ -8,7 +8,10 @@
     {% load bootstrap4 %}
    
     {% block stylesheet %}
+    <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
     <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
@@ -19,7 +22,7 @@
       {% block body %}
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Personal Gallery</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,8 +42,8 @@
               
             </div>
             <form class="form-inline" action="{% url 'home' %}" method="GET" accept-charset="utf-8">
-                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="category or location">
-                <button class="btn btn-default" type="submit">Search</button>
+                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
+                <button class="btn btn-success" type="submit">Search</button>
               </form>
           </div>
         </nav>
