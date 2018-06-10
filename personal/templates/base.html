@@ -4,19 +4,22 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Gallery{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
-    
+   
     {% load bootstrap4 %}
+   
+    {% block stylesheet %}
+    <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     {% bootstrap_css %}
-    {% block stylesheet %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/app/app.css' %}">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    {% endblock %}
+    
   </head>
   <body>
       {% block body %}
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Gallery</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Personal Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,23 +39,27 @@
               
             </div>
             <form class="form-inline" action="{% url 'home' %}" method="GET" accept-charset="utf-8">
-                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
+                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="category or location">
+                <button class="btn btn-default" type="submit">Search</button>
               </form>
           </div>
         </nav>
 
-    <div class="container">
+    <div class="container-fluid">
       <ol class="breadcrumb my-4">
         {% block breadcrumb %}
         {% endblock %}
       </ol>
       {% block content %}
       {% endblock %}
+
+
     </div>
     {% endblock body %}
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script
+    <script src="{% static 'js/jquery-3.2.0.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
   </body>
 </html>
