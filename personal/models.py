@@ -60,7 +60,7 @@ class Image(models.Model):
         return self.name
 
     def create(self):
-        Image.objects.create(self)
+        Image.objects.create(self.name, self.photo, self.description,self.category,self.location)
     def delete(self):
         Image.objects.create(self)
     
