@@ -10,13 +10,13 @@ class Location(models.Model):
     name = models.CharField(max_length=120, choices = PLACES)
   
     def create(self):
-        pass
+        Location.objects.create(self)
     def delete(self):
-        pass
-    def update(self):
-        pass
+        Location.objects.create(self)
+    
     def search(self):
-        pass
+        loc = Location.filter(name=self.name)
+        return loc
 
     class Meta:
         pass
@@ -32,13 +32,13 @@ class Category(models.Model):
     )
     name = models.CharField(max_length=120, choices =CATEGORIES)
     def create(self):
-        pass
+        Category.objects.create(self)
     def delete(self):
-        pass
-    def update(self):
-        pass
+        Category.objects.create(self)
+    
     def search(self):
-        pass
+        cat = Category.filter(name=self.name)
+        return cat
 
     class Meta:
         verbose_name_plural="Categories"
@@ -50,8 +50,8 @@ class Image(models.Model):
     name = models.CharField(max_length=120, unique=True, blank=False, null=False) 
     photo = models.ImageField(upload_to='uploads', null=False, blank=False)
     description = models.TextField()
-    location = models.ForeignKey(Location, related_name='loc')
-    category = models.ForeignKey(Category, related_name='cat')
+    location = models.ForeignKey(Location, related_name='loc',on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='cat',on_delete=models.CASCADE)
 
     class Meta:
         pass
@@ -60,13 +60,11 @@ class Image(models.Model):
         return self.name
 
     def create(self):
-        pass
+        Image.objects.create(self)
     def delete(self):
-        pass
-    def update(self):
-        pass
-    def get(self):
-        pass
+        Image.objects.create(self)
+    
     def search(self):
-        pass
+        image = Image.filter(name=self.name)
+        return image
 
