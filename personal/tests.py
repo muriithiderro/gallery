@@ -20,6 +20,21 @@ class HomeViewTest(TestCase):
         view = resolve('/')
         self.assertEquals(view.func, home)
 
-#    self.category = Category(name="Books")
-        # self.location = Location(name="Nairobi")
-        # self.image = Image.objects.create(name='git', description="wow image", category=self.category,location=self.location)
+class ModelsTest(TestCase):
+    def setUp(self):
+        self.category = Category(name="Books")
+        self.location = Location(name="Nairobi")
+        self.image = Image(name='git', description="wow image", category=self.category,location=self.location)
+
+    def test_image_instantiation_is_proper(self):
+        self.assertEquals(self.image.name, 'git')
+
+    def test_location_instantiation_is_proper(self):
+        self.assertEquals(self.location.name, 'Nairobi')
+        
+    def test_category_instantiation_is_proper(self):
+        self.assertEquals(self.category.name, 'Books')
+    
+    def test_images_are_proprerly_saved(self):
+        Image.create(self.image.name)
+        self.assertTrue(len(Image.objects.count()>0))
