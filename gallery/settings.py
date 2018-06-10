@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from decouple import config
-dj_database_url
+
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,10 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+SECRET_KEY = '*6*9!5f5a5go87@owbf0+1uju%o(!a8wt9w1w6)h=xm7*sw71u'
 ALLOWED_HOSTS = ["*"]
 
 
@@ -138,5 +137,3 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
-
-django_heroku.settings(locals())
