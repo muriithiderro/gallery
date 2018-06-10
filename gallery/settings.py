@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'personal',
-    'django_heroku'
 ]
 
 MIDDLEWARE = [
