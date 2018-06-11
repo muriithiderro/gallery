@@ -22,7 +22,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 # DEBUG = False
 DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = config('SECRET_KEY')
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['127.0.0.1', 'deryq-gallery.herokuapp.com']
 
 
 # Application definition
