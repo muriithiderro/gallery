@@ -21,8 +21,8 @@ def home(request):
            Q(category__name=query)|
            Q(location__name=query)
         )
-    return render(request, 'home.html', {'images':images,'media_url':settings.MEDIA_URL, 'categories':categories, 'locations':locations})
-
+    return render(request, 'home.html', {'images':images, 'categories':categories, 'locations':locations})
+# 'media_url':settings.MEDIA_URL,
 # def search(request, q):
 #     query = request.GET.get('q', None)
 #     qs = Category.objects.all()
