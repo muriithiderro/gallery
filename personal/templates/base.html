@@ -20,43 +20,26 @@
   </head>
   <body>
       {% block body %}
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark topnav">
           <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Gallery</a>
+            <a class="navbar-brand" style="font-family: 'Peralta', serif; font-size: 40px;" href="{% url 'home' %}">Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="mainMenu">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-                      <a class="dropdown-item" href="#">My account</a>
-                      <a class="dropdown-item" href="#">Change password</a>
-                      <div class="dropdown-divider"></div>
-                    </div>
-                  </li>
-                </ul>
-                
               
             </div>
+            <div class="search-container"></div>
             <form class="form-inline" action="{% url 'home' %}" method="GET" accept-charset="utf-8">
-                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
+                <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search by location by category">
+                <button type="submit"><i class="fa fa-search"></i></button>
               </form>
+            </div>
           </div>
         </nav>
 
     <div class="container-fluid">
-      <ol class="breadcrumb my-4">
-        {% block breadcrumb %}
-        {% endblock %}
-      </ol>
       {% block content %}
       {% endblock %}
-
-
     </div>
     {% endblock body %}
     <script src="{% static 'js/jquery-3.2.0.js' %}"></script>
