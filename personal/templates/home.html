@@ -1,56 +1,126 @@
 {% extends 'base.html' %}
-{% block breadcrumb %}
-  <li class="breadcrumb-item active">Categories   {% for cat in categories %} -{{cat.name}}- {% endfor %}   Locations {% for loc in locations %} -{{loc.name}}- {% endfor %}</li>
-{% endblock %}
 {% block content %}
-{% if images %}
-<div class="row text-center text-lg-left">
-
-    {% for i in images %}
-  <div class="col-lg-3 col-md-4 col-xs-6">
-    
-    <a class="d-block mb-4 h-100" href="#myModal
-    ">
-      <div class="portfolio-item-caption d-flex position-absolute h-100 w-100" data-toggle="modal" data-target="#{{i.id}}">
-        <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-          <i class="fa fa-search-plus fa-3x"></i>
-        </div>
-      </div>
-      <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ i.photo.url }}" alt=""  style="width:100%; height:65%">
-      
-    </a>
-    </div>
-      <!-- The Modal -->
-      <div class="modal fade" id="{{i.id}}">
-          <div class="modal-dialog modal-dialog-centered"style="max-width: 1350px!important;" role="document">
-            <div class="modal-content">
-            
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Details</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="row">
+  <div class="col-md-10">
+      {% if images %}
+      <div class="row text-center text-lg-left" style="margin-top: 10px">
+       
+          {% for i in images %}
+        <div  class="col-lg-3 col-md-3 col-xs-6" >
+          
+          <a class="d-block mb-4 h-100 zoom" href="#{{i.id}}
+          ">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100" data-toggle="modal" data-target="#{{i.id}}">
+              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                <i class="fa fa-search-plus fa-3x"></i>
               </div>
-              
-              <!-- Modal body -->
-              <div class="modal-body">
-                {{i.name}}
-                <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ i.photo.url }}" alt="">
-                {{i.description}}
-              </div>
-              
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              
             </div>
+            <img class="img-fluid " src="{{ i.photo.url }}" alt=""  style="width:90%; height:90%">
+            
+          </a>
+
+
           </div>
+            <!-- The Modal -->
+            <div class="modal fade" id="{{i.id}}">
+                <div class="modal-dialog modal-dialog-centered"style="max-width: 100px!important;" role="document">
+                  <div class="modal-content">
+                      <div class="card" style="width:400px">
+                          <img class="card-img-top" src="{{ i.photo.url }}" alt="Card image" style="width:100%">
+                          <div class="card-body">
+                            <h4 class="card-title"><small>photo name : </small>{{i.name}}</h4>
+                            <p style="font-family: 'Lato', serif" class="card-text">description : {{i.description}}</p>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+          
+        {% endfor %}
         </div>
-    
-  {% endfor %}
+        {% else %}
+        <h4 class="text-center" style="color:red;padding-top:20vh">oops no image related to that location or category.</h4>
+        {% endif %}
+      </div>
+  <div class="col-md-2" style="margin-top: 20px">
+      <div class=" panel panel-primary text-center">
+          <div class="btn-danger panel-heading ">Categories</div>
+          <div class="panel-body">
+              <ul class="list-group">
+                  {% for cat in categories %}
+                  <li class="list-group-item">{{cat.name}}</li>
+                  {% endfor %} 
+                </ul>
+                
+          </div>
+          
+        </div>
+        <div class=" panel panel-primary text-center" style="margin-top: 20px">
+            <div class="btn-danger panel-heading">Locations</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for loc in locations %}
+                    <li class="list-group-item">{{loc.name}}</li>
+                    {% endfor %} 
+                  </ul>
+                  
+            </div>
+            
+          </div>
   </div>
-  {% else %}
-  <h4>oops no image related to that location or category.</h4>
-  {% endif %}
+</div>
 
 {% endblock %}  
+
+
+{% comment %} <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 main">
+    
+  {% if images %}
+  <div class="row text-center text-lg-left">
+   
+      {% for i in images %}
+    <div class="col-lg-3 col-md-3 col-xs-6" >
+      
+      <a class="d-block mb-4 h-100" href="#myModal
+      ">
+        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100" data-toggle="modal" data-target="#{{i.id}}">
+          <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+            <i class="fa fa-search-plus fa-3x"></i>
+          </div>
+        </div>
+        <img class=" card-img-top img-fluid img-thumbnail mx-auto d-block" src="{{ i.photo.url }}" alt=""  style="width:100%; height:65%">
+        
+      </a>
+      </div>
+        <!-- The Modal -->
+        <div class="modal fade" id="{{i.id}}">
+            <div class="modal-dialog modal-dialog-centered"style="max-width: 100px!important;" role="document">
+              <div class="modal-content">
+                  <div class="card" style="width:400px">
+                      <img class="card-img-top" src="{{ i.photo.url }}" alt="Card image" style="width:100%">
+                      <div class="card-body">
+                        <h4 class="card-title"><small>photo name : </small>{{i.name}}</h4>
+                        <p style="font-family: 'Lato', serif" class="card-text">description : {{i.description}}</p>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+      
+    {% endfor %}
+    </div>
+    {% else %}
+    <h4 class="text-center" style="color:red;padding-top:20vh">oops no image related to that location or category.</h4>
+    {% endif %}
+  </div>
+  <div class="col-md-2">
+      
+      <li Categories   {% for cat in categories %} -{{cat.name}}- {% endfor %}   Locations {% for loc in locations %} -{{loc.name}}- {% endfor %}</li>
+       
+    </div>
+  </div>
+  </div> {% endcomment %}
